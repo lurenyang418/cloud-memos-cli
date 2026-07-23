@@ -31,7 +31,7 @@ strip-ansi-escapes = "0.2"
 tempfile = "3.20"
 thiserror = "2.0"
 tokio = { version = "1.47", features = ["macros", "rt-multi-thread", "time"] }
-toml = "0.8"
+toml = "1.1"
 tui-textarea = "0.7"
 url = "2.5"
 uuid = { version = "1.17", features = ["serde", "v4"] }
