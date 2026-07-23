@@ -1,0 +1,12 @@
+/target/
+/.idea/
+/.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 本项目永远不在仓库中保存凭据或本地 profile。
+.env
+.env.*
+!.env.example
+config.toml

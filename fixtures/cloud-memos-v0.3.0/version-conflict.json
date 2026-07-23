@@ -1,0 +1,9 @@
+{
+  "error": {
+    "code": "VERSION_CONFLICT",
+    "message": "Memo 已在其他位置更新",
+    "details": {
+      "currentVersion": 3
+    }
+  }
+}

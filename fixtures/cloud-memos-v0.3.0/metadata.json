@@ -1,0 +1,19 @@
+{
+  "fixtureVersion": 1,
+  "capturedAt": "2026-07-24",
+  "upstream": {
+    "repository": "https://github.com/lurenyang418/cloud-memos",
+    "tag": "v0.3.0",
+    "commit": "0864c2327135779e4ac5baf0a407c082a35a1f42",
+    "apiBasePath": "/api/v1",
+    "openApiVersion": "0.3.0"
+  },
+  "sources": [
+    "src/worker/openapi.ts",
+    "src/shared/types.ts",
+    "src/shared/schemas.ts",
+    "src/worker/routes/memos.ts",
+    "src/worker/middleware.ts"
+  ],
+  "redaction": "Synthetic UUIDs, example.invalid email, fictional content, and no API token."
+}

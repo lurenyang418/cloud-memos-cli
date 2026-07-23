@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "id": "00000000-0000-4000-8000-000000000101",
+      "content": "# Fixture\n\n这是不含真实数据的兼容性样本。 #rust",
+      "visibility": "PRIVATE",
+      "state": "ACTIVE",
+      "pinned": false,
+      "version": 2,
+      "createdAt": 1700000000000,
+      "updatedAt": 1700000001000,
+      "deletedAt": null,
+      "author": {
+        "id": "00000000-0000-4000-8000-000000000001",
+        "name": "示例用户",
+        "username": "example",
+        "image": null
+      },
+      "tags": [
+        "rust"
+      ],
+      "attachments": [
+        {
+          "id": "00000000-0000-4000-8000-000000000201",
+          "filename": "fixture.txt",
+          "contentType": "text/plain",
+          "size": 12,
+          "status": "READY",
+          "url": "/api/v1/attachments/00000000-0000-4000-8000-000000000201/content"
+        }
+      ]
+    }
+  ],
+  "nextCursor": "eyJwaW5uZWQiOmZhbHNlLCJjcmVhdGVkQXQiOjE3MDAwMDAwMDAwMDAsImlkIjoiZml4dHVyZSJ9"
+}

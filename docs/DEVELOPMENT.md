@@ -1,0 +1,44 @@
+# 开发
+
+## 环境
+
+安装 rustup 后，仓库会自动使用 `rust-toolchain.toml` 中的 Rust `1.95.0`。上游 Cloud Memos 不是
+子模块或构建依赖；只有在升级兼容基线时才按 [COMPATIBILITY.md](COMPATIBILITY.md) 审阅固定提交。
+
+## 质量门禁
+
+提交前运行：
+
+```console
+cargo fmt --all -- --check
+cargo clippy --all-targets --all-features -- -D warnings
+cargo test --all-targets --locked
+cargo build --release --locked
+```
+
+测试分层：
+
+- 模块单元测试：配置、URL、脱敏、终端清理和渲染辅助。
+- `tests/app_state.rs`：快捷键与状态机。
+- `tests/http_client.rs`：mock HTTP、安全重定向、scope 和冲突。
+- Ratatui `TestBackend`：宽屏、窄屏、过小、空、错误、编辑、确认、冲突界面。
+- `tests/live_compat.rs`：明确忽略、人工提供凭据的 staging 兼容测试。
+
+不要让普通测试访问真实钥匙串或网络。
+
+## 代码边界
+
+- `api.rs`：唯一的 `/api/v1` HTTP 客户端。
+- `config.rs`：非敏感 profile 与系统凭据抽象。
+- `security.rs`：URL、origin、脱敏和终端清理。
+- `app.rs`：无持久化的 TUI 状态机。
+- `ui.rs`：Ratatui 渲染，不发请求。
+- `editor.rs` / `terminal.rs`：外部编辑器和终端生命周期。
+
+新增写操作必须同时具备：本地只读门禁、`INSUFFICIENT_SCOPE` 降级、适当确认、错误脱敏和 mock
+测试。涉及正文的功能不得引入磁盘缓存。
+
+## CI 与依赖
+
+`.github/workflows/ci.yml` 在三种操作系统运行全部门禁；`Cargo.lock` 必须提交以保证 CLI 可重复
+构建。Dependabot 维护 Cargo 与 GitHub Actions 版本。首版没有发布二进制或部署 workflow。

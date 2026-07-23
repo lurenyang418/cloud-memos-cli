@@ -1,0 +1,13 @@
+{
+  "viewer": {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "name": "示例用户",
+    "email": "redacted@example.invalid",
+    "username": "example",
+    "role": "USER",
+    "status": "ACTIVE"
+  },
+  "setupRequired": false,
+  "appName": "Cloud Memos Fixture",
+  "publicContact": null
+}
