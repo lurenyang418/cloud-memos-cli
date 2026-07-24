@@ -15,11 +15,26 @@ concurrency:
 
 jobs:
   rust:
-    name: Rust 1.95 / ${{ matrix.os }}
+    name: Rust 1.95 / ${{ matrix.name }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - name: Linux x86_64
+            os: ubuntu-latest
+            binary: cloud-memos
+            artifact: linux-x86_64
+            archive_extension: tar.gz
+          - name: macOS arm64
+            os: macos-latest
+            binary: cloud-memos
+            artifact: macos-aarch64
+            archive_extension: tar.gz
+          - name: Windows x86_64
+            os: windows-latest
+            binary: cloud-memos.exe
+            artifact: windows-x86_64
+            archive_extension: zip
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -46,3 +61,18 @@ jobs:
 
       - name: Build release
         run: cargo build --release --locked
+
+      - name: Package CLI artifact
+        shell: bash
+        env:
+          ARCHIVE: cloud-memos-${{ matrix.artifact }}.${{ matrix.archive_extension }}
+          BINARY: target/release/${{ matrix.binary }}
+        run: bash scripts/package-release.sh "$BINARY" "dist/$ARCHIVE"
+
+      - name: Upload CLI artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: cloud-memos-${{ matrix.artifact }}
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 14

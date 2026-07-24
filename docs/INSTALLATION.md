@@ -10,6 +10,20 @@
 
 仓库中的 `rust-toolchain.toml` 会让 rustup 自动选择正确工具链。
 
+## 预编译二进制
+
+[GitHub Releases](https://github.com/lurenyang418/cloud-memos-cli/releases) 提供：
+
+- Linux x86_64
+- macOS Apple Silicon
+- macOS Intel
+- Windows x86_64
+
+Linux 与 macOS 使用 `.tar.gz`，Windows 使用 `.zip`；每个归档都有同名 `.sha256`
+文件。macOS 可运行 `shasum -a 256 -c <file>.sha256`，Linux 可运行
+`sha256sum -c <file>.sha256`。解压后进入同名目录，将 `cloud-memos` 或
+`cloud-memos.exe` 放入 `PATH`。
+
 ## 从源码安装
 
 ```console
@@ -24,8 +38,6 @@ cloud-memos --version
 cargo run --locked -- profile list
 cargo run --locked
 ```
-
-首版只提供源码，不生成或上传预编译二进制。
 
 ## 平台凭据存储
 
