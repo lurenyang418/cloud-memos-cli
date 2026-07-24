@@ -19,9 +19,10 @@
 - macOS Intel
 - Windows x86_64
 
-每个 `.tar.gz` 都有同名 `.sha256` 文件。macOS 可运行
-`shasum -a 256 -c <file>.sha256`，Linux 可运行 `sha256sum -c <file>.sha256`。解压后将
-`cloud-memos` 或 `cloud-memos.exe` 放入 `PATH`。
+Linux 与 macOS 使用 `.tar.gz`，Windows 使用 `.zip`；每个归档都有同名 `.sha256`
+文件。macOS 可运行 `shasum -a 256 -c <file>.sha256`，Linux 可运行
+`sha256sum -c <file>.sha256`。解压后进入同名目录，将 `cloud-memos` 或
+`cloud-memos.exe` 放入 `PATH`。
 
 ## 从源码安装
 

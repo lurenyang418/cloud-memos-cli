@@ -44,5 +44,6 @@ cargo build --release --locked
 `Cargo.lock` 必须提交以保证 CLI 可重复构建。Dependabot 维护 Cargo 与 GitHub Actions 版本。
 
 `.github/workflows/release.yml` 可人工运行以验证四个平台的发布构建。推送与 `Cargo.toml` 版本一致的
-`v*` tag 时，它会生成 Linux x86_64、macOS arm64、macOS x86_64 和 Windows x86_64 归档、
-SHA-256 校验文件及 GitHub Release。发布 job 是唯一具有 `contents: write` 权限的 job。
+`v*` tag 时，它会生成 Linux x86_64、macOS arm64、macOS x86_64 的 `.tar.gz` 和 Windows
+x86_64 的 `.zip`、SHA-256 校验文件及 GitHub Release。每个归档包含同名顶层目录，并在上传前
+从归档中执行一次 `cloud-memos --version`。发布 job 是唯一具有 `contents: write` 权限的 job。

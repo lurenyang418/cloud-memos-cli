@@ -24,14 +24,17 @@ jobs:
             os: ubuntu-latest
             binary: cloud-memos
             artifact: linux-x86_64
+            archive_extension: tar.gz
           - name: macOS arm64
             os: macos-latest
             binary: cloud-memos
             artifact: macos-aarch64
+            archive_extension: tar.gz
           - name: Windows x86_64
             os: windows-latest
             binary: cloud-memos.exe
             artifact: windows-x86_64
+            archive_extension: zip
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -62,7 +65,7 @@ jobs:
       - name: Package CLI artifact
         shell: bash
         env:
-          ARCHIVE: cloud-memos-${{ matrix.artifact }}.tar.gz
+          ARCHIVE: cloud-memos-${{ matrix.artifact }}.${{ matrix.archive_extension }}
           BINARY: target/release/${{ matrix.binary }}
         run: bash scripts/package-release.sh "$BINARY" "dist/$ARCHIVE"
 

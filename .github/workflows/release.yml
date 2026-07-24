@@ -27,15 +27,19 @@ jobs:
           - os: ubuntu-22.04
             target: x86_64-unknown-linux-gnu
             binary: cloud-memos
+            archive_extension: tar.gz
           - os: macos-latest
             target: aarch64-apple-darwin
             binary: cloud-memos
+            archive_extension: tar.gz
           - os: macos-15-intel
             target: x86_64-apple-darwin
             binary: cloud-memos
+            archive_extension: tar.gz
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             binary: cloud-memos.exe
+            archive_extension: zip
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -71,7 +75,7 @@ jobs:
           BINARY: target/${{ matrix.target }}/release/${{ matrix.binary }}
         run: |
           crate_version=$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)
-          archive="cloud-memos-v${crate_version}-${{ matrix.target }}.tar.gz"
+          archive="cloud-memos-v${crate_version}-${{ matrix.target }}.${{ matrix.archive_extension }}"
           bash scripts/package-release.sh "$BINARY" "dist/$archive"
 
       - name: Upload build artifact
