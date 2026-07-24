@@ -4,7 +4,7 @@
 终端客户端。它只调用实例的 `/api/v1` HTTP API，不访问 D1、R2 或 Cloudflare 管理接口，也不把
 Cloud Memos 源码作为构建依赖。
 
-当前版本是源码交付的 `0.1.0`。兼容基线为 Cloud Memos `v0.3.0`、API `/api/v1`、上游提交
+当前版本是 `0.1.0`。兼容基线为 Cloud Memos `v0.3.0`、API `/api/v1`、上游提交
 `0864c2327135779e4ac5baf0a407c082a35a1f42`。
 
 ## 功能
@@ -22,7 +22,10 @@ Cloud Memos 源码作为构建依赖。
 
 ## 安装
 
-需要 Rust `1.95.0` 和 UTF-8 终端。首版不发布预编译二进制：
+从 [GitHub Releases](https://github.com/lurenyang418/cloud-memos-cli/releases) 下载与平台匹配的
+归档，使用同名 `.sha256` 文件校验后，将 `cloud-memos` 或 `cloud-memos.exe` 放入 `PATH`。
+
+也可以使用 Rust `1.95.0` 从源码安装：
 
 ```console
 cargo install --path . --locked

@@ -9,3 +9,5 @@
 - 添加四视图 Ratatui 客户端、Markdown 详情、编辑、筛选、分页和 Memo 生命周期操作。
 - 添加只读降级、破坏性操作确认、终端清理与版本冲突草稿保护。
 - 固定 Cloud Memos `v0.3.0` / API `/api/v1` 兼容基线。
+- 添加 CI 二进制 artifacts，以及包含四个平台归档和 SHA-256 的 tag Release。
+- 更新兼容 Rust 1.95 的直接依赖。
