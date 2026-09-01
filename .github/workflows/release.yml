@@ -102,7 +102,7 @@ jobs:
           merge-multiple: true
 
       - name: Publish release
-        uses: softprops/action-gh-release@v3.0.2
+        uses: softprops/action-gh-release@v3.0.3
         with:
           files: dist/*
           fail_on_unmatched_files: true
